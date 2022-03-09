@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  traefik:
+    image: traefik:latest
+    networks:
+      - intranet
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:      
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /docker-data/traefik/traefik.yml:/traefik.yml:ro
+      - /docker-data/traefik/configurations:/configurations
